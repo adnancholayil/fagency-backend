@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const projectController = require('../controllers/projectController');
+const authController = require('../controllers/authController');
 
 router.get('/', projectController.getAllProjects);
-router.post('/', projectController.createProject);
 router.get('/:id', projectController.getProjectById);
-router.put('/:id', projectController.updateProject);
-router.delete('/:id', projectController.deleteProject);
+router.post('/', authController.protect, projectController.createProject);
+router.put('/:id', authController.protect, projectController.updateProject);
+router.delete('/:id', authController.protect, projectController.deleteProject);
 
 module.exports = router;
