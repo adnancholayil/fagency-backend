@@ -1,4 +1,4 @@
-require('dotenv').config(); // Load env vars
+require('dotenv').config(); // Load env vars (Trigger Restart)
 const app = require('./src/app');
 const mongoose = require('mongoose');
 
