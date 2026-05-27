@@ -10,19 +10,10 @@ cloudinary.config({
 
 const storage = new CloudinaryStorage({
   cloudinary,
-  params: async (req, file) => {
-    if (file.mimetype.startsWith('video/')) {
-      return {
-        folder: 'fagency/projects',
-        resource_type: 'video',
-        allowed_formats: ['mp4', 'webm', 'ogg']
-      };
-    }
-    return {
-      folder: 'fagency/projects',
-      allowed_formats: ['jpg', 'jpeg', 'png', 'webp', 'gif'],
-      transformation: [{ width: 1200, crop: 'limit', quality: 'auto' }]
-    };
+  params: {
+    folder: 'fagency/projects',
+    resource_type: 'auto',
+    allowed_formats: ['jpg', 'jpeg', 'png', 'webp', 'gif', 'mp4', 'webm', 'mov', 'ogg'],
   },
 });
 
